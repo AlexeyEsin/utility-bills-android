@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.UtilityBills" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="android:spinnerItemStyle">
+            @style/spinnerItemStyle
+        </item>
+
+        <item name="android:spinnerDropDownItemStyle">
+            @style/spinnerDropDownItemStyle
+        </item>
+
+        <item name="textInputStyle">
+            @style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
+    </style>
+
+    <style name="Theme.UtilityBills" parent="Base.Theme.UtilityBills" />
+
+    <style name="spinnerItemStyle">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="spinnerDropDownItemStyle">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+</resources>

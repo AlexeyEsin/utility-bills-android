@@ -1,0 +1,294 @@
+package com.example.utilitybills.contract;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+
+import org.web3j.abi.TypeReference;
+import org.web3j.abi.datatypes.Address;
+import org.web3j.abi.datatypes.Bool;
+import org.web3j.abi.datatypes.DynamicArray;
+import org.web3j.abi.datatypes.DynamicStruct;
+import org.web3j.abi.datatypes.Function;
+import org.web3j.abi.datatypes.Type;
+import org.web3j.abi.datatypes.Utf8String;
+import org.web3j.abi.datatypes.generated.Uint256;
+import org.web3j.crypto.Credentials;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
+import org.web3j.protocol.core.RemoteFunctionCall;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
+import org.web3j.tx.Contract;
+import org.web3j.tx.TransactionManager;
+import org.web3j.tx.gas.ContractGasProvider;
+
+/**
+ * <p>Auto generated code.
+ * <p><strong>Do not modify!</strong>
+ * <p>Please use the <a href="https://docs.web3j.io/command_line.html">web3j command line tools</a>,
+ * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the
+ * <a href="https://github.com/web3j/web3j/tree/master/codegen">codegen module</a> to update.
+ *
+ * <p>Generated with web3j version 1.5.0.
+ */
+@SuppressWarnings("rawtypes")
+public class UtilityBills extends Contract {
+    public static final String BINARY = "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061226e806100606000396000f3fe6080604052600436106100955760003560e01c80636c7369ce116100595780636c7369ce1461012f578063939371d11461016c578063c2fc1a1514610197578063d0ca9664146101c0578063f8f8a912146101fd5761009c565b80631de27a581461009e57806349e58b46146100c757806357ea89b6146100f2578063595089ae146100fc5780635ef91296146101065761009c565b3661009c57005b005b3480156100aa57600080fd5b506100c560048036038101906100c0919061153a565b610228565b005b3480156100d357600080fd5b506100dc6102dd565b6040516100e9919061176e565b60405180910390f35b6100fa610668565b005b61010461070f565b005b34801561011257600080fd5b5061012d600480360381019061012891906118c5565b6107a6565b005b34801561013b57600080fd5b50610156600480360381019061015191906119de565b6109d1565b6040516101639190611a71565b60405180910390f35b34801561017857600080fd5b50610181610b93565b60405161018e9190611a71565b60405180910390f35b3480156101a357600080fd5b506101be60048036038101906101b99190611a8c565b610c52565b005b3480156101cc57600080fd5b506101e760048036038101906101e29190611ab9565b610d19565b6040516101f49190611b9e565b60405180910390f35b34801561020957600080fd5b50610212611170565b60405161021f9190611bcf565b60405180910390f35b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461028057600080fd5b80600260008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060060160008282546102d29190611c19565b925050819055505050565b606060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461033757600080fd5b600060018054905067ffffffffffffffff8111156103585761035761179a565b5b60405190808252806020026020018201604052801561039157816020015b61037e6113fa565b8152602001906001900390816103765790505b50905060005b60018054905081101561066057600060026000600184815481106103be576103bd611c4d565b5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090506040518060a001604052808260000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182600301805461047f90611cab565b80601f01602080910402602001604051908101604052809291908181526020018280546104ab90611cab565b80156104f85780601f106104cd576101008083540402835291602001916104f8565b820191906000526020600020905b8154815290600101906020018083116104db57829003601f168201915b5050505050815260200182600401805461051190611cab565b80601f016020809104026020016040519081016040528092919081815260200182805461053d90611cab565b801561058a5780601f1061055f5761010080835404028352916020019161058a565b820191906000526020600020905b81548152906001019060200180831161056d57829003601f168201915b505050505081526020018260050180546105a390611cab565b80601f01602080910402602001604051908101604052809291908181526020018280546105cf90611cab565b801561061c5780601f106105f15761010080835404028352916020019161061c565b820191906000526020600020905b8154815290600101906020018083116105ff57829003601f168201915b50505050508152602001826006015481525083838151811061064157610640611c4d565b5b602002602001018190525050808061065890611cdc565b915050610397565b508091505090565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146106c057600080fd5b60003390508073ffffffffffffffffffffffffffffffffffffffff166108fc479081150290604051600060405180830381858888f1935050505015801561070b573d6000803e3d6000fd5b5050565b6000600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090508060060154341015610799576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161079090611d81565b60405180910390fd5b6000816006018190555050565b60006107b287876111d1565b905060008114816040516020016107c99190611e19565b60405160208183030381529060405290610819576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016108109190611e78565b60405180910390fd5b506040518060e001604052808873ffffffffffffffffffffffffffffffffffffffff1681526020018781526020018681526020018581526020018481526020018381526020016000815250600260008973ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060208201518160010190816108ff9190612046565b5060408201518160020190816109159190612046565b50606082015181600301908161092b9190612046565b5060808201518160040190816109419190612046565b5060a08201518160050190816109579190612046565b5060c082015181600601559050506001879080600181540180825580915050600190039060005260206000200160009091909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050505050505050565b600080600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000209050610aab816001018054610a2790611cab565b80601f0160208091040260200160405190810160405280929190818152602001828054610a5390611cab565b8015610aa05780601f10610a7557610100808354040283529160200191610aa0565b820191906000526020600020905b815481529060010190602001808311610a8357829003601f168201915b5050505050856113a1565b8015610b495750610b48816002018054610ac490611cab565b80601f0160208091040260200160405190810160405280929190818152602001828054610af090611cab565b8015610b3d5780601f10610b1257610100808354040283529160200191610b3d565b820191906000526020600020905b815481529060010190602001808311610b2057829003601f168201915b5050505050846113a1565b5b610b88576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610b7f90612164565b60405180910390fd5b600191505092915050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610bee57600080fd5b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1603610c4a5760019050610c4f565b600090505b90565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610caa57600080fd5b60005b600180549050811015610d1557610d0260018281548110610cd157610cd0611c4d565b5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1683610228565b8080610d0d90611cdc565b915050610cad565b5050565b610d2161143f565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161480610da657508173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b610de5576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610ddc906121d0565b60405180910390fd5b600260008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206040518060e00160405290816000820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001600182018054610e9590611cab565b80601f0160208091040260200160405190810160405280929190818152602001828054610ec190611cab565b8015610f0e5780601f10610ee357610100808354040283529160200191610f0e565b820191906000526020600020905b815481529060010190602001808311610ef157829003601f168201915b50505050508152602001600282018054610f2790611cab565b80601f0160208091040260200160405190810160405280929190818152602001828054610f5390611cab565b8015610fa05780601f10610f7557610100808354040283529160200191610fa0565b820191906000526020600020905b815481529060010190602001808311610f8357829003601f168201915b50505050508152602001600382018054610fb990611cab565b80601f0160208091040260200160405190810160405280929190818152602001828054610fe590611cab565b80156110325780601f1061100757610100808354040283529160200191611032565b820191906000526020600020905b81548152906001019060200180831161101557829003601f168201915b5050505050815260200160048201805461104b90611cab565b80601f016020809104026020016040519081016040528092919081815260200182805461107790611cab565b80156110c45780601f10611099576101008083540402835291602001916110c4565b820191906000526020600020905b8154815290600101906020018083116110a757829003601f168201915b505050505081526020016005820180546110dd90611cab565b80601f016020809104026020016040519081016040528092919081815260200182805461110990611cab565b80156111565780601f1061112b57610100808354040283529160200191611156565b820191906000526020600020905b81548152906001019060200180831161113957829003601f168201915b505050505081526020016006820154815250509050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146111cb57600080fd5b47905090565b600080600090505b600180549050811015611395578373ffffffffffffffffffffffffffffffffffffffff166001828154811061121157611210611c4d565b5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff160361126157600191505061139b565b611373600260006001848154811061127c5761127b611c4d565b5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060010180546112ef90611cab565b80601f016020809104026020016040519081016040528092919081815260200182805461131b90611cab565b80156113685780601f1061133d57610100808354040283529160200191611368565b820191906000526020600020905b81548152906001019060200180831161134b57829003601f168201915b5050505050846113a1565b1561138257600291505061139b565b808061138d90611cdc565b9150506111d9565b50600090505b92915050565b6000816040516020016113b49190612221565b60405160208183030381529060405280519060200120836040516020016113db9190612221565b6040516020818303038152906040528051906020012014905092915050565b6040518060a00160405280600073ffffffffffffffffffffffffffffffffffffffff168152602001606081526020016060815260200160608152602001600081525090565b6040518060e00160405280600073ffffffffffffffffffffffffffffffffffffffff1681526020016060815260200160608152602001606081526020016060815260200160608152602001600081525090565b6000604051905090565b600080fd5b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006114d1826114a6565b9050919050565b6114e1816114c6565b81146114ec57600080fd5b50565b6000813590506114fe816114d8565b92915050565b6000819050919050565b61151781611504565b811461152257600080fd5b50565b6000813590506115348161150e565b92915050565b600080604083850312156115515761155061149c565b5b600061155f858286016114ef565b925050602061157085828601611525565b9150509250929050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b6115af816114c6565b82525050565b600081519050919050565b600082825260208201905092915050565b60005b838110156115ef5780820151818401526020810190506115d4565b60008484015250505050565b6000601f19601f8301169050919050565b6000611617826115b5565b61162181856115c0565b93506116318185602086016115d1565b61163a816115fb565b840191505092915050565b61164e81611504565b82525050565b600060a08301600083015161166c60008601826115a6565b5060208301518482036020860152611684828261160c565b9150506040830151848203604086015261169e828261160c565b915050606083015184820360608601526116b8828261160c565b91505060808301516116cd6080860182611645565b508091505092915050565b60006116e48383611654565b905092915050565b6000602082019050919050565b60006117048261157a565b61170e8185611585565b93508360208202850161172085611596565b8060005b8581101561175c578484038952815161173d85826116d8565b9450611748836116ec565b925060208a01995050600181019050611724565b50829750879550505050505092915050565b6000602082019050818103600083015261178881846116f9565b905092915050565b600080fd5b600080fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6117d2826115fb565b810181811067ffffffffffffffff821117156117f1576117f061179a565b5b80604052505050565b6000611804611492565b905061181082826117c9565b919050565b600067ffffffffffffffff8211156118305761182f61179a565b5b611839826115fb565b9050602081019050919050565b82818337600083830152505050565b600061186861186384611815565b6117fa565b90508281526020810184848401111561188457611883611795565b5b61188f848285611846565b509392505050565b600082601f8301126118ac576118ab611790565b5b81356118bc848260208601611855565b91505092915050565b60008060008060008060c087890312156118e2576118e161149c565b5b60006118f089828a016114ef565b965050602087013567ffffffffffffffff811115611911576119106114a1565b5b61191d89828a01611897565b955050604087013567ffffffffffffffff81111561193e5761193d6114a1565b5b61194a89828a01611897565b945050606087013567ffffffffffffffff81111561196b5761196a6114a1565b5b61197789828a01611897565b935050608087013567ffffffffffffffff811115611998576119976114a1565b5b6119a489828a01611897565b92505060a087013567ffffffffffffffff8111156119c5576119c46114a1565b5b6119d189828a01611897565b9150509295509295509295565b600080604083850312156119f5576119f461149c565b5b600083013567ffffffffffffffff811115611a1357611a126114a1565b5b611a1f85828601611897565b925050602083013567ffffffffffffffff811115611a4057611a3f6114a1565b5b611a4c85828601611897565b9150509250929050565b60008115159050919050565b611a6b81611a56565b82525050565b6000602082019050611a866000830184611a62565b92915050565b600060208284031215611aa257611aa161149c565b5b6000611ab084828501611525565b91505092915050565b600060208284031215611acf57611ace61149c565b5b6000611add848285016114ef565b91505092915050565b600060e083016000830151611afe60008601826115a6565b5060208301518482036020860152611b16828261160c565b91505060408301518482036040860152611b30828261160c565b91505060608301518482036060860152611b4a828261160c565b91505060808301518482036080860152611b64828261160c565b91505060a083015184820360a0860152611b7e828261160c565b91505060c0830151611b9360c0860182611645565b508091505092915050565b60006020820190508181036000830152611bb88184611ae6565b905092915050565b611bc981611504565b82525050565b6000602082019050611be46000830184611bc0565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6000611c2482611504565b9150611c2f83611504565b9250828201905080821115611c4757611c46611bea565b5b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b60006002820490506001821680611cc357607f821691505b602082108103611cd657611cd5611c7c565b5b50919050565b6000611ce782611504565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8203611d1957611d18611bea565b5b600182019050919050565b600082825260208201905092915050565b7f4e6f7420656e6f7567682066756e647300000000000000000000000000000000600082015250565b6000611d6b601083611d24565b9150611d7682611d35565b602082019050919050565b60006020820190508181036000830152611d9a81611d5e565b9050919050565b600081905092915050565b7f526571756573742064656e6965642120436f64653a2000000000000000000000600082015250565b6000611de2601683611da1565b9150611ded82611dac565b601682019050919050565b6000819050919050565b611e13611e0e82611504565b611df8565b82525050565b6000611e2482611dd5565b9150611e308284611e02565b60208201915081905092915050565b6000611e4a826115b5565b611e548185611d24565b9350611e648185602086016115d1565b611e6d816115fb565b840191505092915050565b60006020820190508181036000830152611e928184611e3f565b905092915050565b60008190508160005260206000209050919050565b60006020601f8301049050919050565b600082821b905092915050565b600060088302611efc7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82611ebf565b611f068683611ebf565b95508019841693508086168417925050509392505050565b6000819050919050565b6000611f43611f3e611f3984611504565b611f1e565b611504565b9050919050565b6000819050919050565b611f5d83611f28565b611f71611f6982611f4a565b848454611ecc565b825550505050565b600090565b611f86611f79565b611f91818484611f54565b505050565b5b81811015611fb557611faa600082611f7e565b600181019050611f97565b5050565b601f821115611ffa57611fcb81611e9a565b611fd484611eaf565b81016020851015611fe3578190505b611ff7611fef85611eaf565b830182611f96565b50505b505050565b600082821c905092915050565b600061201d60001984600802611fff565b1980831691505092915050565b6000612036838361200c565b9150826002028217905092915050565b61204f826115b5565b67ffffffffffffffff8111156120685761206761179a565b5b6120728254611cab565b61207d828285611fb9565b600060209050601f8311600181146120b0576000841561209e578287015190505b6120a8858261202a565b865550612110565b601f1984166120be86611e9a565b60005b828110156120e6578489015182556001820191506020850194506020810190506120c1565b8683101561210357848901516120ff601f89168261200c565b8355505b6001600288020188555050505b505050505050565b7f4163636573732064656e69656421000000000000000000000000000000000000600082015250565b600061214e600e83611d24565b915061215982612118565b602082019050919050565b6000602082019050818103600083015261217d81612141565b9050919050565b7f64656e6965640000000000000000000000000000000000000000000000000000600082015250565b60006121ba600683611d24565b91506121c582612184565b602082019050919050565b600060208201905081810360008301526121e9816121ad565b9050919050565b60006121fb826115b5565b6122058185611da1565b93506122158185602086016115d1565b80840191505092915050565b600061222d82846121f0565b91508190509291505056fea26469706673582212208fc2d1116c94af87cf6cc48e58e38d05abed9de0aa804cc4a335038049433ee964736f6c63430008130033";
+
+    public static final String FUNC_REGISTER = "Register";
+
+    public static final String FUNC_LOGIN = "LogIn";
+
+    public static final String FUNC_LOGINASADMIN = "LogInAsAdmin";
+
+    public static final String FUNC_GETPAYERINFO = "GetPayerInfo";
+
+    public static final String FUNC_MAKEPAYMENT = "MakePayment";
+
+    public static final String FUNC_GETPAYERS = "GetPayers";
+
+    public static final String FUNC_ADDDEBT = "AddDebt";
+
+    public static final String FUNC_ADDDEBTTOALL = "AddDebtToAll";
+
+    public static final String FUNC_GETBALANCE = "GetBalance";
+
+    public static final String FUNC_WITHDRAW = "Withdraw";
+
+    protected static final HashMap<String, String> _addresses;
+
+    static {
+        _addresses = new HashMap<>();
+        _addresses.put("1337", "0x9fC79336D2F050e7E1cd479795d0698A73ecD65B");
+        _addresses.put("5777", "0x34D8e4868101b73cC2Fe8A8C41e06951f0F28309");
+    }
+
+    @Deprecated
+    protected UtilityBills(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    protected UtilityBills(String contractAddress, Web3j web3j, Credentials credentials, ContractGasProvider contractGasProvider) {
+        super(BINARY, contractAddress, web3j, credentials, contractGasProvider);
+    }
+
+    @Deprecated
+    protected UtilityBills(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    protected UtilityBills(String contractAddress, Web3j web3j, TransactionManager transactionManager, ContractGasProvider contractGasProvider) {
+        super(BINARY, contractAddress, web3j, transactionManager, contractGasProvider);
+    }
+
+    public RemoteFunctionCall<TransactionReceipt> Register(String payerAddress, String username, String password, String firstName, String middleName, String lastName) {
+        final Function function = new Function(
+                FUNC_REGISTER,
+                Arrays.asList(new org.web3j.abi.datatypes.Address(payerAddress),
+                        new org.web3j.abi.datatypes.Utf8String(username),
+                        new org.web3j.abi.datatypes.Utf8String(password),
+                        new org.web3j.abi.datatypes.Utf8String(firstName),
+                        new org.web3j.abi.datatypes.Utf8String(middleName),
+                        new org.web3j.abi.datatypes.Utf8String(lastName)),
+                Collections.emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteFunctionCall<Boolean> LogIn(String username, String password) {
+        final Function function = new Function(FUNC_LOGIN,
+                Arrays.asList(new org.web3j.abi.datatypes.Utf8String(username),
+                        new org.web3j.abi.datatypes.Utf8String(password)),
+                List.of(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteFunctionCall<Boolean> LogInAsAdmin() {
+        final Function function = new Function(FUNC_LOGINASADMIN,
+                Collections.emptyList(),
+                List.of(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteFunctionCall<Payer> GetPayerInfo(String payerAddress) {
+        final Function function = new Function(FUNC_GETPAYERINFO,
+                List.of(new Address(payerAddress)),
+                List.of(new TypeReference<Payer>() {}));
+        return executeRemoteCallSingleValueReturn(function, Payer.class);
+    }
+
+    public RemoteFunctionCall<TransactionReceipt> MakePayment(BigInteger weiValue) {
+        final Function function = new Function(
+                FUNC_MAKEPAYMENT,
+                Collections.emptyList(),
+                Collections.emptyList());
+        return executeRemoteCallTransaction(function, weiValue);
+    }
+
+    public RemoteFunctionCall<List<ShortPayer>> GetPayers() {
+        final Function function = new Function(FUNC_GETPAYERS,
+                Collections.emptyList(),
+                List.of(new TypeReference<DynamicArray<ShortPayer>>() {}));
+        return new RemoteFunctionCall<>(function,
+                () -> {
+                    @SuppressWarnings("unchecked")
+                    List<Type> result = (List<Type>) executeCallSingleValueReturn(function, List.class);
+                    return convertToNative(result);
+                });
+    }
+
+    public RemoteFunctionCall<TransactionReceipt> AddDebt(String payerAddress, BigInteger debtAmount) {
+        final Function function = new Function(
+                FUNC_ADDDEBT,
+                Arrays.asList(new org.web3j.abi.datatypes.Address(payerAddress),
+                        new org.web3j.abi.datatypes.generated.Uint256(debtAmount)),
+                Collections.emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteFunctionCall<TransactionReceipt> AddDebtToAll(BigInteger debtAmount) {
+        final Function function = new Function(
+                FUNC_ADDDEBTTOALL,
+                List.of(new Uint256(debtAmount)),
+                Collections.emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteFunctionCall<BigInteger> GetBalance() {
+        final Function function = new Function(FUNC_GETBALANCE,
+                Collections.emptyList(),
+                List.of(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
+
+    public RemoteFunctionCall<TransactionReceipt> Withdraw(BigInteger weiValue) {
+        final Function function = new Function(
+                FUNC_WITHDRAW,
+                Collections.emptyList(),
+                Collections.emptyList());
+        return executeRemoteCallTransaction(function, weiValue);
+    }
+
+    @Deprecated
+    public static UtilityBills load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new UtilityBills(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    @Deprecated
+    public static UtilityBills load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new UtilityBills(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static UtilityBills load(String contractAddress, Web3j web3j, Credentials credentials, ContractGasProvider contractGasProvider) {
+        return new UtilityBills(contractAddress, web3j, credentials, contractGasProvider);
+    }
+
+    public static UtilityBills load(String contractAddress, Web3j web3j, TransactionManager transactionManager, ContractGasProvider contractGasProvider) {
+        return new UtilityBills(contractAddress, web3j, transactionManager, contractGasProvider);
+    }
+
+    public static RemoteCall<UtilityBills> deploy(Web3j web3j, Credentials credentials, ContractGasProvider contractGasProvider) {
+        return deployRemoteCall(UtilityBills.class, web3j, credentials, contractGasProvider, BINARY, "");
+    }
+
+    public static RemoteCall<UtilityBills> deploy(Web3j web3j, TransactionManager transactionManager, ContractGasProvider contractGasProvider) {
+        return deployRemoteCall(UtilityBills.class, web3j, transactionManager, contractGasProvider, BINARY, "");
+    }
+
+    @Deprecated
+    public static RemoteCall<UtilityBills> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return deployRemoteCall(UtilityBills.class, web3j, credentials, gasPrice, gasLimit, BINARY, "");
+    }
+
+    @Deprecated
+    public static RemoteCall<UtilityBills> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return deployRemoteCall(UtilityBills.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, "");
+    }
+
+    protected String getStaticDeployedAddress(String networkId) {
+        return _addresses.get(networkId);
+    }
+
+    public static String getPreviouslyDeployedAddress(String networkId) {
+        return _addresses.get(networkId);
+    }
+
+    public static class Payer extends DynamicStruct {
+        public String payerAddress;
+
+        public String username;
+
+        public String password;
+
+        public String firstName;
+
+        public String middleName;
+
+        public String lastName;
+
+        public BigInteger debt;
+
+        public Payer(String payerAddress, String username, String password, String firstName, String middleName, String lastName, BigInteger debt) {
+            super(new org.web3j.abi.datatypes.Address(payerAddress),
+                    new org.web3j.abi.datatypes.Utf8String(username),
+                    new org.web3j.abi.datatypes.Utf8String(password),
+                    new org.web3j.abi.datatypes.Utf8String(firstName),
+                    new org.web3j.abi.datatypes.Utf8String(middleName),
+                    new org.web3j.abi.datatypes.Utf8String(lastName),
+                    new org.web3j.abi.datatypes.generated.Uint256(debt));
+            this.payerAddress = payerAddress;
+            this.username = username;
+            this.password = password;
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
+            this.debt = debt;
+        }
+
+        public Payer(Address payerAddress, Utf8String username, Utf8String password, Utf8String firstName, Utf8String middleName, Utf8String lastName, Uint256 debt) {
+            super(payerAddress, username, password, firstName, middleName, lastName, debt);
+            this.payerAddress = payerAddress.getValue();
+            this.username = username.getValue();
+            this.password = password.getValue();
+            this.firstName = firstName.getValue();
+            this.middleName = middleName.getValue();
+            this.lastName = lastName.getValue();
+            this.debt = debt.getValue();
+        }
+    }
+
+    public static class ShortPayer extends DynamicStruct {
+        public String payerAddress;
+
+        public String firstName;
+
+        public String middleName;
+
+        public String lastName;
+
+        public BigInteger debt;
+
+        public ShortPayer(String payerAddress, String firstName, String middleName, String lastName, BigInteger debt) {
+            super(new org.web3j.abi.datatypes.Address(payerAddress),
+                    new org.web3j.abi.datatypes.Utf8String(firstName),
+                    new org.web3j.abi.datatypes.Utf8String(middleName),
+                    new org.web3j.abi.datatypes.Utf8String(lastName),
+                    new org.web3j.abi.datatypes.generated.Uint256(debt));
+            this.payerAddress = payerAddress;
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
+            this.debt = debt;
+        }
+
+        public ShortPayer(Address payerAddress, Utf8String firstName, Utf8String middleName, Utf8String lastName, Uint256 debt) {
+            super(payerAddress, firstName, middleName, lastName, debt);
+            this.payerAddress = payerAddress.getValue();
+            this.firstName = firstName.getValue();
+            this.middleName = middleName.getValue();
+            this.lastName = lastName.getValue();
+            this.debt = debt.getValue();
+        }
+    }
+}

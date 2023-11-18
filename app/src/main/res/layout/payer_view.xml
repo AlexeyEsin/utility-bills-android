@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/full_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/add_debt_ib"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="Есин Алексей Александрович" />
+
+    <ImageButton
+        android:id="@+id/add_debt_ib"
+        android:src="@drawable/baseline_add_circle_24"
+        android:contentDescription="@string/add_debt"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:tint="?attr/colorPrimary"
+        tools:ignore="UseAppTint" />
+
+    <TextView
+        android:id="@+id/debt_label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/full_name_tv"
+        android:layout_marginStart="20dp"
+        android:textSize="18sp"
+        android:text="@string/debt_label" />
+
+    <TextView
+        android:id="@+id/debt_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/full_name_tv"
+        android:layout_toEndOf="@+id/debt_label_tv"
+        android:paddingHorizontal="4dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="500 gwei" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/debt_tv"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimaryTransparent" />
+
+</RelativeLayout>

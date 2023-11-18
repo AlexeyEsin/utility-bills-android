@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">UtilityBills</string>
+    <string name="header_app_name">Коммунальные услуги</string>
+
+    <string name="register_link">Нет аккаунта? Зарегистрируйтесь</string>
+    <string name="log_in_link">Уже есть аккаунт? Войдите</string>
+    <string name="registered">Аккаунт успешно зарегистрирован</string>
+    <string name="welcome">Добро пожаловать, %1$s!</string>
+    <string name="debt_sum_label">Сумма задолженности:</string>
+    <string name="debt_label">Долг:</string>
+    <string name="debt_repaid">Задолженность погашена!</string>
+    <string name="on_account">На счету:</string>
+    <string name="no_payers">В системе пока никто не зарегистрирован</string>
+    <string name="add_debt">Добавить задолженность</string>
+    <string name="debt_sum_hint">Сумма</string>
+    <string name="debt_currency_hint">Валюта</string>
+    <string name="withdrawed">Средства переведены на ваш счёт</string>
+    <string name="debt_added">Задолженность добавлена</string>
+
+    <!-- Поля ввода -->
+    <string name="first_name">Имя <font color="@color/red">*</font></string>
+    <string name="middle_name">Отчество</string>
+    <string name="last_name">Фамилия <font color="@color/red">*</font></string>
+    <string name="username">Имя пользователя <font color="@color/red">*</font></string>
+    <string name="password">Пароль <font color="@color/red">*</font></string>
+    <string name="private_key">Закрытый ключ <font color="@color/red">*</font></string>
+
+    <!-- Действия -->
+    <string name="cancel">Отмена</string>
+    <string name="submit">Подтвердить</string>
+    <string name="log_in">Войти</string>
+    <string name="log_out">Выйти</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="withdraw">Вывести</string>
+    <string name="make_payment">Погасить</string>
+
+    <!-- Ошибки -->
+    <string name="not_enough_funds">Ошибка! Проверьте, достаточно ли средств на счету</string>
+    <string name="unknown_error">Произошла ошибка</string>
+    <string name="fill_all_fields">Заполните все поля</string>
+    <string name="incorrect_credentials">Неверные данные пользователя</string>
+
+    <!-- Валюта -->
+    <string-array name="units">
+        <item>wei</item>
+        <item>gwei</item>
+        <item>finney</item>
+        <item>ether</item>
+    </string-array>
+</resources>
