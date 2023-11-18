@@ -18,12 +18,12 @@
     <string name="debt_added">Задолженность добавлена</string>
 
     <!-- Поля ввода -->
-    <string name="first_name">Имя <font color="@color/red">*</font></string>
+    <string name="first_name">Имя<font color="@color/red">*</font></string>
     <string name="middle_name">Отчество</string>
-    <string name="last_name">Фамилия <font color="@color/red">*</font></string>
-    <string name="username">Имя пользователя <font color="@color/red">*</font></string>
-    <string name="password">Пароль <font color="@color/red">*</font></string>
-    <string name="private_key">Закрытый ключ <font color="@color/red">*</font></string>
+    <string name="last_name">Фамилия<font color="@color/red">*</font></string>
+    <string name="username">Имя пользователя<font color="@color/red">*</font></string>
+    <string name="password">Пароль<font color="@color/red">*</font></string>
+    <string name="private_key">Закрытый ключ<font color="@color/red">*</font></string>
 
     <!-- Действия -->
     <string name="cancel">Отмена</string>
@@ -38,6 +38,7 @@
     <string name="not_enough_funds">Ошибка! Проверьте, достаточно ли средств на счету</string>
     <string name="unknown_error">Произошла ошибка</string>
     <string name="fill_all_fields">Заполните все поля</string>
+    <string name="username_length">Имя пользователя и пароль должны быть не менее 4 символов</string>
     <string name="incorrect_credentials">Неверные данные пользователя</string>
 
     <!-- Валюта -->

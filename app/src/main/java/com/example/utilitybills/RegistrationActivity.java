@@ -40,6 +40,19 @@ public class RegistrationActivity extends AppCompatActivity {
         String password = passwordET.getText().toString();
         String privateKey = privateKeyET.getText().toString();
 
+        if (firstName.length() == 0 || lastName.length() == 0 || username.length() == 0
+                || password.length() == 0 || privateKey.length() == 0) {
+            Toast toastError = Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT);
+            toastError.show();
+            return;
+        }
+
+        if (username.length() < 4 || password.length() < 4) {
+            Toast toastError = Toast.makeText(this, R.string.username_length, Toast.LENGTH_SHORT);
+            toastError.show();
+            return;
+        }
+
         try {
             contract = ContractInstance.get(privateKey).contract;
             String userAddress = ContractInstance.get(privateKey).userAddress;

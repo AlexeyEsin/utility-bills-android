@@ -26,16 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
         MaterialToolbar topAppBar = findViewById(R.id.top_app_bar);
         topAppBar.getMenu().clear();
-
-        // admin
-        usernameET.setText("admin");
-        passwordET.setText("admin");
-        privateKeyET.setText("0x7a7b7606577410c032351f06621b666ac124ba8ea752860bfbf92d522a5f0329");
-
-//         egor
-//        usernameET.setText("egor");
-//        passwordET.setText("egor");
-//        privateKeyET.setText("0xc35cf7a2884f1871ec145325f38c1494655aa13c599b5ed164cae2d6449c6e1e");
     }
 
     public void onClickLogIn(View view) {
