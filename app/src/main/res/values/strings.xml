@@ -40,6 +40,8 @@
     <string name="fill_all_fields">Заполните все поля</string>
     <string name="username_length">Имя пользователя и пароль должны быть не менее 4 символов</string>
     <string name="incorrect_credentials">Неверные данные пользователя</string>
+    <string name="debt_less_than_zero">Сумма должна быть больше 0</string>
+    <string name="debt_less_than_1_wei">Сумма должна быть не меньше 1 wei</string>
 
     <!-- Валюта -->
     <string-array name="units">

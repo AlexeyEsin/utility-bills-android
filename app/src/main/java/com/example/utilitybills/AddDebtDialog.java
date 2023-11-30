@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.utilitybills.contract.ContractInstance;
@@ -49,28 +51,60 @@ public class AddDebtDialog extends AppCompatDialogFragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireActivity(),
-                R.layout.dropdown_menu_popup_item,
+                R.layout.dropdown_menu_item,
                 getResources().getStringArray(R.array.units));
         debtUnitTV.setAdapter(adapter);
+        debtUnitTV.setText(adapter.getItem(0), false);
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
         builder.setView(view)
                 .setTitle(R.string.add_debt)
-                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {})
-                .setPositiveButton(R.string.submit, (dialogInterface, i) -> addDebtToPayer());
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.submit, null);
 
-        return builder.show();
+        return builder.create();
     }
 
-    private void addDebtToPayer() {
+    @Override
+    public void onResume() {
+        super.onResume();
+        final AlertDialog dialog = (AlertDialog) getDialog();
+        if (dialog != null) {
+            Button positiveButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(v -> addDebtToPayer(dialog));
+        }
+    }
+
+    private void addDebtToPayer(AlertDialog dialog) {
         String debtUnit = debtUnitTV.getText().toString();
         String debtValueStr = debtValueET.getText().toString();
+
+        if (debtValueStr.equals("")) {
+            Toast toastError = Toast.makeText(requireActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT);
+            toastError.show();
+            return;
+        }
+
+        float debtValueFloat = Float.parseFloat(debtValueStr);
+        if (debtValueFloat <= 0) {
+            Toast toastError = Toast.makeText(requireActivity(), R.string.debt_less_than_zero, Toast.LENGTH_SHORT);
+            toastError.show();
+            return;
+        }
+
+        if (debtUnit.equals("wei") && debtValueFloat < 1) {
+            Toast toastError = Toast.makeText(requireActivity(), R.string.debt_less_than_1_wei, Toast.LENGTH_SHORT);
+            toastError.show();
+            return;
+        }
+
         BigInteger debtValue = Utils.convertToWei(debtValueStr, debtUnit);
 
         try {
             contract.AddDebt(payerAddress, debtValue).sendAsync().get();
             payers.list.get(payerPosition).debt = payers.list.get(payerPosition).debt.add(debtValue);
             payerAdapter.notifyDataSetChanged();
+            dialog.dismiss();
 
             Toast toastError = Toast.makeText(requireActivity(), R.string.debt_added, Toast.LENGTH_SHORT);
             toastError.show();
